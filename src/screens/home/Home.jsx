@@ -21,11 +21,10 @@ const HomeScreen = ({ imgUrl, setImgUrl }) => {
         toast.error("Enter something for search");
       }
     } catch (error) {
-      console.error("Error fetching the images:", error);
+      console.error("Error fetching the images", error);
     }
   };
 
-  console.log(imgUrl);
 
   return (
     <div className="homeScreen">
@@ -52,7 +51,7 @@ const HomeScreen = ({ imgUrl, setImgUrl }) => {
             <button
               onClick={() => {
                 setImgUrl(image.urls.small);
-                navigate("/edit")
+                navigate("/edit");
               }}
             >
               Add Captions

@@ -1,15 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./canvas.scss";
 // import * as fabric from "fabric";
-import { fabric } from 'fabric';
+import { fabric } from "fabric";
 import { Link } from "react-router-dom";
 
-const CanvasComp = ({ imgUrl, setImgUrl }) => {
+const CanvasComp = ({ imgUrl, showImage }) => {
   const [canvass, setCanvass] = useState();
-  //   const [storeImgLink, setCanvass] = useState();
   const [inputText, setInputText] = useState("");
   const canvasRef = useRef(null);
-  console.log(imgUrl);
 
   const renderImage = (link) => {
     let imageElement = document.createElement("img");
@@ -29,30 +27,15 @@ const CanvasComp = ({ imgUrl, setImgUrl }) => {
     };
   }, []);
 
-  //   useEffect(() => {
-  //     //   const canvas = new fabric.Canvas(canvasRef.current);
-
-  //     let imageElement = document.createElement("img");
-  //     imageElement.src = imgUrl;
-  //     imageElement.onload = () => {
-  //       let image = new fabric.Image(imageElement);
-  //       canvass.add(image);
-  //       //   canvas.centerObject(image);
-  //       //   canvas.setActiveObject(image);
-  //     };
-
-  //   }, [imgUrl]);
-
-  // Add text to the canvas
-
   const downloadImage = () => {
-    // const canvas = canvasRef.current;
     const link = document.createElement("a");
     link.href = canvass.toDataURL({ format: "png" });
     link.download = "canvas-image.png";
     link.click();
+    
   };
 
+  // Add text to the canvas
   const addText = () => {
     const text = new fabric.Textbox(inputText, {
       left: 100,
@@ -63,6 +46,7 @@ const CanvasComp = ({ imgUrl, setImgUrl }) => {
     canvass.add(text);
   };
 
+  // Add Shape to the canvas
   const addShape = (shape) => {
     let shapeObj;
 
@@ -89,6 +73,9 @@ const CanvasComp = ({ imgUrl, setImgUrl }) => {
   const handleChange = (e) => {
     setInputText(e.target.value);
   };
+
+
+
   return (
     <div className="canvasWrapper">
       <Link to="/" className="backToHome">
@@ -125,7 +112,9 @@ const CanvasComp = ({ imgUrl, setImgUrl }) => {
             <button onClick={addText}>Add Text</button>
           </div>
 
-          <div className="addImage" onClick={()=>renderImage(imgUrl)}>Add Image</div>
+          <div className="addImage" onClick={() => renderImage(imgUrl)}>
+            Import Image
+          </div>
 
           <div className="downloadBtn" onClick={downloadImage}>
             Download the Image{" "}
