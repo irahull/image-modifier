@@ -1,0 +1,79 @@
+.homeScreen {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  button {
+    font-family: Poppins;
+    padding: 10px 30px;
+    border-radius: 3px;
+    color: white;
+    outline: none;
+    background-color: tomato;
+    border: none;
+    cursor: pointer;
+  }
+  .upperText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid green;
+    padding: 5px 20px;
+  }
+  .searchBar {
+    width: 50%;
+    text-align: center;
+    margin: 100px auto 0px auto;
+    input {
+      width: 80%;
+      margin-top: 10px;
+      padding: 10px 20px;
+      outline: none;
+      border: 1px solid lightgray;
+      border-radius: 3px;
+      font-family: Poppins;
+    }
+  }
+  .imageWrapper {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 35px;
+    margin-top: 50px;
+    .imageItem {
+      width: 100%;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1vw;
+      margin: 2vw auto 0px auto;
+      overflow: hidden;
+      .imageItem {
+        height: 100%;
+        width: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 4px;
+        }
+      }
+      button {
+        padding: 5px 10px;
+      }
+    }
+  }
+  // .editCanvas{
+  //   // position: absolute;
+  //   // visibility: hidden;
+  //   // top: 0;
+  //   // width: 100%;
+  //   // height: 100%;
+  // }
+}
